@@ -1,5 +1,8 @@
 <?php
+
+
 defined('BASEPATH') or exit('No direct script access allowed');
+
 
 class Auth extends CI_Controller
 {
@@ -126,16 +129,19 @@ class Auth extends CI_Controller
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_user' => 'ahmadsaifur88@gmail.com',
-            'smtp_pass' => '22Mei2013',
-            'smtp_port' => 465,
+            'smtp_pass' => '1234567890',
+            'smtp_port' => 25,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'newline'   => "\r\n"
         ];
 
+        $this->load->library('email', $config);
         $this->email->initialize($config);
 
+
         $this->email->from('ahmadsaifur88@gmail.com', ' Programming Unindra');
+
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
